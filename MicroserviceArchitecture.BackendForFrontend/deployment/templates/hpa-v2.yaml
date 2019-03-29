@@ -1,0 +1,27 @@
+apiVersion: autoscaling/v2beta1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-service-horizpodautoscaler-bff
+  labels: 
+    app: {{ .Values.DeploymentName }}
+    team: {{ .Values.Team }}
+    heritage: {{ .Release.Service }}
+    release: {{ .Release.Name }}
+    chart: {{ .Chart.Name }}-{{ .Chart.Version }}
+    app: {{ .Chart.Name }}
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1beta1
+    kind: Deployment
+    name: {{ .Values.DeploymentName }}
+  minReplicas: {{ .Values.MinReplicaSet }}
+  maxReplicas: {{ .Values.MaxReplicaSet }}
+  metrics:
+  - type: Resource
+    resource:
+      name: cpu
+      targetAverageUtilization: {{ .Values.LimitsCpuPercentage }}
+  - type: Resource
+    resource:
+      name: memory
+      targetAverageUtilization: {{ .Values.LimitsMemoryPercentage }}

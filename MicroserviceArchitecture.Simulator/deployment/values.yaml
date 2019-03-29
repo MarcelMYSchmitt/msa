@@ -1,0 +1,11 @@
+revisionHistoryLimit: 0
+
+DeploymentName: simulator
+Team: falcon
+ReplicaCount: 3
+ImageRegistry: mswedevmsaacr.azurecr.io
+ImageVersion: latest
+RequestsMemory: 256Mi
+RequestsCpu: 500m
+LimitsMemory: 256Mi
+LimitsCpu: 500m

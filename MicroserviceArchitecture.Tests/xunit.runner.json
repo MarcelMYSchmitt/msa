@@ -1,0 +1,8 @@
+﻿{
+  "EnvironmentTag": "dev",
+  "AzureRegionTag": "ne",
+  "Test:BackendForFrontendBaseUrl": "http://localhost:8080",
+  "EventHubSendConnectionString": "Endpoint=sb://f-ne-sma-tmon-eventhubns.servicebus.windows.net/;SharedAccessKeyName=sendRule;SharedAccessKey=obn79J371YxsB+mfOTsXghAL+bo4jZtI8A8rkF6XToo=;EntityPath=f-ne-sma-tmon-eventhub-ingress",
+  "EventHubListenConnectionString": "Endpoint=sb://f-ne-sma-tmon-eventhubns.servicebus.windows.net/;SharedAccessKeyName=listenRule;SharedAccessKey=u8L6xtFH2O7qYLEFEH+FVXmoNw1l3Er5y3qPEhTeokw=;EntityPath=f-ne-sma-tmon-eventhub-ingress",
+  "StorageAccessKey": "FgvhPVFZXEMGoDEW0NQKT2j6dEzEpXqp5X/9PpTA6DvqRVLt80WlZePZ60lCuIHstiI5VzmVl+Ezi5+DkIxQ+Q=="
+}

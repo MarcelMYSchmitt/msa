@@ -1,0 +1,25 @@
+revisionHistoryLimit: 0
+
+# Deployment
+DeploymentName: backendforfrontend
+Team: msa
+ReplicaCount: 3
+Environment: dev
+ImageRegistry: mswedevmsaacr.azurecr.io
+ImageVersion: latest
+RequestsMemory: 1Gi
+RequestsCpu: 500m
+LimitsMemory: 1Gi
+LimitsCpu: 900m
+MinReplicaSet: 3
+MaxReplicaSet: 10
+LimitsCpuPercentage: 60
+LimitsMemoryPercentage: 60
+
+
+# Ingress and Services
+ServicePort: 80
+ServiceTargetPort: 80
+MonitoringServiceName: bff-monitoring-service
+MonitoringServicePort: 8081
+MonitoringServiceTargetPort: 8081

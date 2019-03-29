@@ -1,0 +1,51 @@
+version: '3.4'
+
+services:
+  processor:
+    image: microservice/processor
+    build:
+      context: ./MicroserviceArchitecture.Processor
+      dockerfile: Dockerfile
+    environment:
+      EnvironmentTag: ${EnvironmentTag}
+      AzureRegionTag: ${AzureRegionTag}
+      EventHubPath: ${EventHubPath}
+      EventHubEndpoint: ${EventHubEndpoint}
+      EventHubListenConnectionString: ${EventHubListenConnectionString}
+      StorageAccessKey: ${StorageAccessKey}
+      StorageAccountName: ${StorageAccountName}
+      LogEventLevel: ${LogEventLevel}
+    ports:
+      - "9201:9201"
+
+  database:
+    image: redis
+
+  backendforfrontend:
+    image: microservice/backendforfrontend
+    ports:
+      - "8080:80"
+      - "8081:8081"
+    build:
+      context: ./MicroserviceArchitecture.BackendForFrontend
+      dockerfile: Dockerfile
+    environment:
+      EnvironmentTag: ${EnvironmentTag}
+      AzureRegionTag: ${AzureRegionTag}
+      LogEventLevel: ${LogEventLevel}
+
+#  simulator:
+#    image: microservice/simulator
+#    build:
+#      context: ./MicroserviceArchitecture.Simulator
+#      dockerfile: Dockerfile
+#    environment:
+#      EnvironmentTag: ${EnvironmentTag}
+#      AzureRegionTag: ${AzureRegionTag}
+#      EventHubSendConnectionString: ${EventHubSendConnectionString}
+#      LogEventLevel: ${LogEventLevel}
+
+networks:
+  default:
+    external:
+      name: local_development_network

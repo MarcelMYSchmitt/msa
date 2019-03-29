@@ -1,0 +1,20 @@
+revisionHistoryLimit: 0
+
+# Deployment
+DeploymentName: processor
+Team: falcon
+ReplicaCount: 3
+ImageRegistry: mswedevmsaacr.azurecr.io
+ImageVersion: latest
+RequestsMemory: 1Gi
+RequestsCpu: 500m
+LimitsMemory: 1Gi
+LimitsCpu: 900m
+MinReplicaSet: 3
+MaxReplicaSet: 10
+LimitsCpuPercentage: 60
+LimitsMemoryPercentage: 60
+
+# Service
+ServicePort: 9201
+ServiceTargetPort: 9201

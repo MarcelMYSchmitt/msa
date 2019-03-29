@@ -1,0 +1,16 @@
+revisionHistoryLimit: 0
+
+# Deployment
+DeploymentName: redis
+ServiceName: database
+Team: msa
+ReplicaCount: 1
+ImageVersion: latest
+RequestsMemory: 1Gi
+RequestsCpu: 1
+LimitsMemory: 1Gi
+LimitsCpu: 1
+
+# Ingress and Services
+ServicePort: 6379
+ServiceTargetPort: 6379

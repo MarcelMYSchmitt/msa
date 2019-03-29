@@ -1,0 +1,24 @@
+# compose 2 is enough for this file
+version: '2'
+
+services:
+  processor-build:
+    image: microsoft/dotnet:2.0.3-sdk-jessie
+    volumes:
+      - .:/sources
+    working_dir: /sources/MicroserviceArchitecture.Processor
+    command: /bin/bash -c "dotnet restore && dotnet publish -c Release -o ./obj/Docker/publish"
+    
+  backend-for-frontend-build:
+    image: microsoft/dotnet:2.0.3-sdk-jessie
+    volumes:
+      - .:/sources
+    working_dir: /sources/MicroserviceArchitecture.BackendForFrontend
+    command: /bin/bash -c "dotnet restore && dotnet publish -c Release -o ./obj/Docker/publish"
+
+  tests-build:
+    image: microsoft/dotnet:2.0.3-sdk-jessie
+    volumes:
+      - .:/sources
+    working_dir: /sources/MicroserviceArchitecture.Tests
+    command: /bin/bash -c "dotnet restore && dotnet build"

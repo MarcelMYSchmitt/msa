@@ -1,0 +1,20 @@
+# compose 2 is enough for this file
+version: '2'
+
+services:
+  acceptance-tests:
+    image: microsoft/dotnet:2.0.3-sdk-jessie
+    volumes:
+      - .:/sources
+    working_dir: /sources/MicroserviceArchitecture.Tests
+    
+    # -fx-version is a fix for https://github.com/xunit/xunit/issues/1573
+    command: /bin/bash -c "dotnet restore && dotnet xunit -trait Category=Acceptance --fx-version 2.0.3 -xml acceptance-test-results.xml"
+
+    environment:
+      EnvironmentTag: ${EnvironmentTag}
+      AzureRegionTag: ${AzureRegionTag}
+      EventHubListenConnectionString: ${EventHubListenConnectionString}
+      StorageAccessKey: ${StorageAccessKey}
+      
+      Test:BackendForFrontendBaseUrl: ${BackendForFrontendBaseUrl}

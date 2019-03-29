@@ -1,0 +1,4 @@
+name: msa-redis
+version: 1.0.1
+appVersion: 1.0.1
+description: Deployment for redis

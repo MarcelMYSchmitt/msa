@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  simulator:
+    image: msa/simulator
+    build:
+      context: ./MicroserviceArchitecture.Simulator
+      dockerfile: Dockerfile
+    environment:
+      EnvironmentTag: ${EnvironmentTag}
+      AzureRegionTag: ${AzureRegionTag}
+      EventHubSendConnectionString: ${EventHubSendConnectionString}
+
+networks:
+  default:
+    external:
+      name: local_development_network
